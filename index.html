@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+
+    <meta charset="UTF-8">
+    <title>Happy Birthday (Dego)!</title>
+    <link rel="stylesheet" href="styles.css">
+     <style>
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.heart {
+  position: fixed;
+  bottom: 0;
+  font-size: 30px;
+  animation: floatUp 5s linear forwards;
+  color: red;
+  pointer-events: none;
+  z-index: 9999;
+}
+</style>
+</head>
+<body>
+
+<div id="wish-container" class="container">
+    <h1 class="bubu">🎉 Happy Birthday, Duhita (Dego)! 🎉</h1>
+
+    <div class="message bubu">
+        Happy Birthday to the one who means <span class="highlight">the world to me! ❤️</span><br><br>
+        I can’t put into words how thankful I am for you—for walking into my life and filling it with so much light. Thank you for being the reason behind my smiles, for understanding me like no one else can, and for standing by my side no matter what life throws our way.<br><br>
+        You’re my blessing from the universe, my proof that miracles do happen. I’ll always be grateful for the day I found you, and even more grateful that you stayed.<br><br>
+        Today is all about celebrating you, the beautiful soul that makes every day so much brighter. I cannot describe in words that how much important your birthday is to me. And I know I’m very rude, but trust me—you are the closest person in my life, the one I can open up to about my anxiety, depression, and failures, which, at the end of the day, turn into rude behavior.I’m SORRY for all the behavior you’ve had to deal with daily because of me. <br></br>You truly deserve all the happiness in the world, DUHITA. HAPPY BIRTHDAY ONCE AGAIN DEGO!! Have the most amazing birthday—you deserve nothing less!
+    </div>
+
+    <button class="bubu play-button" onclick="startShow()">🎶 Start Surprise 🎶</button>
+</div>
+
+<div id="slideshow-container" class="container hidden">
+    <div class="slideshow">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+        <img src="photo5.jpg">
+        <img src="photo6.jpg">
+        <img src="photo7.jpg">
+        <img src="photo8.jpg">
+        <img src="photo9.jpg">
+        <img src="photo10.jpg">
+     <img src="photo11.jpg">
+            <img src="photo12.jpg">
+              <img src="photo13.jpg">
+                <img src="photo14.jpg">
+                  <img src="photo15.jpg">
+                    <img src="photo16.jpg">
+    </div>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<audio id="birthdaySong" src="count on me.mp3"></audio>
+
+<script src="confetti.js"></script>
+<script src="slideshow.js"></script>
+<script>
+function startShow() {
+    document.getElementById("birthdaySong").play();
+    document.getElementById("wish-container").classList.add("hidden");
+    document.getElementById("slideshow-container").classList.remove("hidden");
+}
+</script>
+<script>let slideIndex = 0;
+let slides = document.querySelectorAll(".slideshow img");
+let slideDuration = 3000; // 3 seconds per slide
+
+showSlides();
+
+function showSlides() {
+    slides.forEach(slide => slide.style.display = "none");
+    
+    if (slideIndex < slides.length) {
+        slides[slideIndex].style.display = "block";
+        slideIndex++;
+        setTimeout(showSlides, slideDuration);
+    } else {
+        // Slideshow finished, now start animation
+        startAnimation();
+    }
+}
+
+function startAnimation() {
+    document.body.style.backgroundColor = "black";
+    document.body.innerHTML += `
+        <div class="final-animation">
+            <h1 class="bubu">🎉 Once Again... Happy Birthday, Duhita! 🎉</h1>
+            <p>May your day be filled with endless joy! ❤️</p>
+        </div>
+    `;
+
+    startConfetti(); // You already have confetti — this will start it again
+
+    // Now start hearts animation
+    setInterval(createHeart, 300);
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 30 + 20 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+</script>
+
+</body>
+</html>
